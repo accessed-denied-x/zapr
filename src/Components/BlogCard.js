@@ -8,7 +8,7 @@ export default function BlogCard() {
 				<p>Blogcard Name placeholder</p>
 				<p>Blogcard description placeholder</p>
 			</div>
-			<div>
+			<div id="timestamp-div">
 				<p>Timestamp placeholder</p>
 			</div>
 		</div>
