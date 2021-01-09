@@ -1,0 +1,8 @@
+#header-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 0.3%;
+	padding-right: 0.3%;
+	background-color: #e6ac86;
+}
