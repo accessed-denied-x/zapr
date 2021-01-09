@@ -9,6 +9,7 @@ export default function Home() {
 			<Searchbar />
 			<div id="blogcard-container">
 				<BlogCard />
+				<BlogCard />
 			</div>
 			<div id="button-container">
 				<button type="button" id="new-blog-button">
