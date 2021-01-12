@@ -1,0 +1,26 @@
+#home-div {
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+#button-container {
+	margin-top: 1%;
+	text-align: center;
+	margin-top: 20%;
+	margin-bottom: 5%;
+}
+
+#button-container > button {
+	height: 60px;
+	width: 60px;
+	border-radius: 60px;
+	border: none;
+	background-color: #191927;
+	color: #c2c2c2;
+	font-size: 24px;
+}
+
+#button-container > button:active {
+	background-color: #42425c;
+}
