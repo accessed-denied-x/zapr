@@ -1,0 +1,10 @@
+#header-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 0.3%;
+	padding-right: 0.3%;
+	background-color: #191927;
+	color: #c2c2c2;
+	padding-bottom: 5px;
+}
