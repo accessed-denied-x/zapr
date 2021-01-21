@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Searchbar from '../Components/Searchbar';
 import BlogCard from '../Components/BlogCard';
 import Login from './Login';
+import useToken from '../Util/UseToken';
 import '../Styles/Home.css';
 
 export default function Home() {
-	const [token, setToken] = useState();
+	const [token, setToken] = useToken();
 
 	return !token ? (
-		<Login />
+		<Login setToken={setToken} />
 	) : (
 		<div id="home-div">
 			<Searchbar />

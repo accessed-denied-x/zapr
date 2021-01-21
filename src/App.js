@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './Components/Header';
 import Home from './Views/Home';
 import Blog from './Views/Blog';
 import Login from './Views/Login';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default function App() {
 	return (
