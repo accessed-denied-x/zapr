@@ -1,16 +1,15 @@
 import React from 'react';
 import '../Styles/BlogCard.css';
+import { Link } from "react-router-dom";
 
-export default function BlogCard() {
+export default function BlogCard( {transaction} ) {
 	return (
-		<div id="blogcard-body">
-			<div id="body-main">
-				<p>Blogcard Name placeholder</p>
-				<p>Blogcard description placeholder</p>
-			</div>
-			<div id="timestamp-div">
-				<p>Timestamp placeholder</p>
-			</div>
-		</div>
+		<Link to="/blog/600a4cc1d3898876b076f74f">
+			<li>
+				<p>{transaction.title}</p>
+				<p>{transaction.description}</p>
+				<p>{transaction.timestamp}</p>
+			</li>
+		</Link>
 	);
 }

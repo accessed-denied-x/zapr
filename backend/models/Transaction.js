@@ -12,7 +12,9 @@ const TransactionSchema = new mongoose.Schema({
     body: {
         type: String,
         required: [true, "Your blog needs body text"]
-    }
+    },
+    user_id: String,
+    timestamp: String
 });
 
 module.exports = mongoose.model('Transaction', TransactionSchema);

@@ -1,21 +1,25 @@
-import React from 'react';
-import Searchbar from '../Components/Searchbar';
+import React, { useContext, useEffect } from 'react';
 import BlogCard from '../Components/BlogCard';
-import Login from './Login';
-import useToken from '../Util/UseToken';
 import '../Styles/Home.css';
+import { GlobalContext } from '../Context/GlobalState';
 
 export default function Home() {
-	const [token, setToken] = useToken();
+	const { transactions, getTransactions } = useContext(GlobalContext);
 
-	return !token ? (
-		<Login setToken={setToken} />
-	) : (
+	useEffect(() => {
+		getTransactions();
+	}, [])
+	
+	console.log(transactions);
+
+	return (
 		<div id="home-div">
-			<Searchbar />
 			<div id="blogcard-container">
-				<BlogCard />
-				<BlogCard />
+				<ul>
+					{transactions.map(transaction => (
+						<BlogCard key={transaction._id} transaction={transaction} />
+					))}
+				</ul>
 			</div>
 			<div id="button-container">
 				<button type="button" id="new-blog-button">

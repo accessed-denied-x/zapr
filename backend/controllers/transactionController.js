@@ -20,12 +20,41 @@ exports.getTransactions = async (req, res, next) => {
 	}
 };
 
+exports.getBlog = async (req, res, next) => {
+	try {
+		const transaction = await Transaction.findById(req.params.id);
+
+		if (!transaction) {
+			return res.status(404).json({
+				success: false,
+				error: 'No such ID found',
+			});
+		}
+
+		return res.status(200).send(transaction);
+
+	} catch (err) {
+		
+	}
+}
+
+//Alternate way of doing the same thing as above
+/* exports.getTransactions = async (req, res, next) => {
+	Transaction.find((err, data) => {
+		if(err) {
+			res.status(500).send(err);
+		} else {
+			res.status(200).send(data);
+		}
+	})
+} */
+
 // @desc    Post all transaction (blog)
 // @route   POST /api/transactions
 // @access  Public
 exports.postTransaction = async (req, res, next) => {
 	try {
-		const { title, description, body } = req.body;
+		const { title, description, body, user_id, timestamp } = req.body;
 
 		const transaction = await Transaction.create(req.body);
 
