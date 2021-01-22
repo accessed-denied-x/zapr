@@ -11,7 +11,7 @@ connectDB();
 const transactions = require('./routes/transactions');
 
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
