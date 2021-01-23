@@ -44,7 +44,7 @@ export default function BlogCard({ transaction }) {
 							</Avatar>
 						}
 						action={
-							<IconButton aria-label="settings">
+							<IconButton aria-label="settings" color="secondary">
 								<MoreVert />
 							</IconButton>
 						}
