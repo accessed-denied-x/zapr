@@ -7,6 +7,11 @@ export default (state, action) => {
                 loading: false.valueOf,
                 transactions: action.payload
             }
+        case 'DELETE_TRANSACTION':
+            return {
+                ...state,
+                transactions: state.transactions.filter(transaction => transaction._id !== action.payload)
+            }
         case 'TRANSACTION_ERROR':
             return {
                 ...state,
