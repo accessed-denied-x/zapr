@@ -5,6 +5,9 @@ const useStyles = makeStyles((theme) => ({
 	space: {
 		height: '70px',
 	},
+	li: {
+		listStyleType: 'none',
+	},
 	logo: {
 		maxWidth: '100px',
 	},
