@@ -1,15 +1,17 @@
 import React from 'react';
-import { useStyles } from '../Styles/Styles';
-import { useAuth0 } from '@auth0/auth0-react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import InputBase from '@material-ui/core/InputBase';
-
+import { useAuth0 } from '@auth0/auth0-react';
+import { useStyles } from '../Styles/Styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import SearchIcon from '@material-ui/icons/Search';
+import { Search, Notifications, AccountCircle } from '@material-ui/icons';
+import {
+	AppBar,
+	Toolbar,
+	IconButton,
+	InputBase,
+	Typography,
+	Badge,
+} from '@material-ui/core';
 
 export default function Header() {
 	const {
@@ -21,20 +23,38 @@ export default function Header() {
 		logout,
 	} = useAuth0();
 	const classes = useStyles();
+	const [anchorEl, setAnchorEl] = React.useState(null);
+	const menuId = 'primary-search-account-menu';
+
+	const handleProfileMenuOpen = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
 
 	return (
 		<div className={classes.header}>
-			<AppBar position="static" >
+			<AppBar color="primary">
 				<Toolbar>
-					<img src="https://i.pinimg.com/736x/c5/1e/5b/c51e5b2f43fc57ec2aa106db09f2ff62.jpg" alt="logo" id="logo" />
-					<Router><IconButton component={Link} to='/' >
-						Zapr
-					</IconButton></Router>
+					<img
+						src="https://i.pinimg.com/originals/cc/11/7f/cc117f49be98a60dcf1c3e380cbb86b9.gif"
+						alt="logo"
+						className={classes.logo}
+					/>
+					<Router>
+						<IconButton component={Link} to="/">
+							<Typography
+								variant="h4"
+								color="secondary"
+								className={classes.title}
+							>
+								Zapr
+							</Typography>
+						</IconButton>
+					</Router>
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
-							<SearchIcon />
-							</div>
-							<InputBase
+							<Search />
+						</div>
+						<InputBase
 							placeholder="Search…"
 							classes={{
 								root: classes.inputRoot,
@@ -42,17 +62,38 @@ export default function Header() {
 							}}
 							inputProps={{ 'aria-label': 'search' }}
 						/>
-          			</div>
-					<div>
-						Logged in as: 
-						{/* {user.name} */}
-						<IconButton color="primary">
-							<ExitToAppIcon onClick={() => logout({ returnTo: window.location.origin })}  />
-						</IconButton>
 					</div>
+					{!isAuthenticated && (
+						<div className={classes.usernav}>
+							<IconButton
+								aria-label="show 17 new notifications"
+								color="inherit"
+								className={classes.userButton}
+							>
+								<Badge badgeContent={17} color="secondary">
+									<Notifications />
+								</Badge>
+							</IconButton>
+							<IconButton
+								aria-label="account of current user"
+								aria-controls={menuId}
+								aria-haspopup="true"
+								onClick={handleProfileMenuOpen}
+								color="inherit"
+								className={classes.userButton}
+							>
+								<AccountCircle />
+							</IconButton>
+							<IconButton color="inherit" className={classes.userButton}>
+								<ExitToAppIcon
+									onClick={() => logout({ returnTo: window.location.origin })}
+								/>
+							</IconButton>
+						</div>
+					)}
 				</Toolbar>
 			</AppBar>
+			<div className={classes.space}></div>
 		</div>
-
 	);
 }
