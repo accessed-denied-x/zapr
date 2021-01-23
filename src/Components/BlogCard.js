@@ -48,7 +48,7 @@ export default function BlogCard({ transaction }) {
 
 	return (
 		//<Link to="/blog/600a4cc1d3898876b076f74f">
-		<li>
+		<li className={classes.li}>
 			<div className={classes.blogcard}>
 				<Card className={classes.card}>
 					<CardHeader
