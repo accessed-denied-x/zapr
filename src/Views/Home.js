@@ -12,8 +12,6 @@ function Home() {
 	useEffect(() => {
 		getTransactions();
 	}, [])
-	
-	console.log(transactions);
 
 	return (
 		<div id="placeholder">
@@ -25,7 +23,7 @@ function Home() {
 				</ul>
 				<Link to="/newBlog">
 					<div id="button-container">
-							<button type="button" id="new-blog-button" onClick={window.scrollTo({top: 0, behavior: "smooth"})}>
+							<button type="button" id="new-blog-button">
 								+
 							</button>
 					</div>
@@ -35,7 +33,7 @@ function Home() {
 			
 			<div className="view">
 				<Switch>
-					<Route path="/blog/600a4cc1d3898876b076f74f">
+					<Route path='/blog/:id'>
 						<Blog />
 					</Route>
 					<Route path="/newBlog">

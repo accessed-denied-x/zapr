@@ -20,6 +20,9 @@ exports.getTransactions = async (req, res, next) => {
 	}
 };
 
+// @desc	Get a blog by ID
+// @route	GET /api/transactions
+// @acess	Public
 exports.getBlog = async (req, res, next) => {
 	try {
 		const transaction = await Transaction.findById(req.params.id);
@@ -31,10 +34,16 @@ exports.getBlog = async (req, res, next) => {
 			});
 		}
 
-		return res.status(200).send(transaction);
+		return res.status(200).json({
+			success: true,
+			data: transaction
+		})
 
 	} catch (err) {
-		
+		return res.status(404).json({
+			success: false,
+			error: 'Blog not found'
+		})
 	}
 }
 
