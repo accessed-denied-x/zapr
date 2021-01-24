@@ -12,7 +12,7 @@ import { GlobalContext } from '../Context/GlobalState';
 import Blog from './Blog';
 import NewBlog from './NewBlog';
 
-function Home() {
+export default function Home() {
 	const { transactions, getTransactions } = useContext(GlobalContext);
 	const classes = useStyles();
 
@@ -44,5 +44,3 @@ function Home() {
 		</div>
 	);
 }
-
-export default Home;

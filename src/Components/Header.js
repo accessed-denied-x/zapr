@@ -70,11 +70,14 @@ export default function Header() {
 					</div>
 					{!isAuthenticated && (
 						<div className={classes.usernav}>
-							<Link to="/newBlog">
-								<IconButton color="inherit" className={classes.userButton}>
-									<PostAdd />
-								</IconButton>
-							</Link>
+							<IconButton
+								component={Link}
+								to="/newBlog"
+								color="inherit"
+								className={classes.userButton}
+							>
+								<PostAdd />
+							</IconButton>
 							<IconButton
 								aria-label="show 17 new notifications"
 								color="inherit"
