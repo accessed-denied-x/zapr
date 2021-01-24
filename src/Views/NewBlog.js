@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useState, useContext } from 'react';
+import { GlobalContext } from '../Context/GlobalState';
 
 export default function NewBlog() {
-    return (
-        <form>
-            <label for="title">Title: </label>
-            <input name="title" type="text" required />
-            
-            <label for="description">Description: </label>
-            <input name="description" type="text" required />
+    const [title, setTitle] = useState('');
+    const [description, setDesc] = useState('');
+    const [body, setBodyText] = useState('');
 
-            <label for="body">Body: </label>
-            <textarea name="body" placeholder="Release your ideas..." required></textarea>
+    const { addTransaction } = useContext(GlobalContext);
+
+    const onSubmit = e => {
+        e.preventDefault();
+
+        const newTransaction = {
+            title,
+            description,
+            body
+        }
+
+        addTransaction(newTransaction)
+    }
+
+    return (
+        <form onSubmit={onSubmit}>
+            <label htmlFor="title">Title: </label>
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            
+            <label htmlFor="description">Description: </label>
+            <input type="text" value={description} onChange={(e) => setDesc(e.target.value)} required />
+
+            <label htmlFor="body">Body: </label>
+            <textarea placeholder="Release your ideas..." value={body} onChange={(e) => setBodyText(e.target.value)} required></textarea>
 
             <button>Submit</button>
         </form>

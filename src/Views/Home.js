@@ -33,7 +33,7 @@ function Home() {
 			</div>
 			<div className={classes.view}>
 				<Switch>
-					<Route path="/blog/600a4cc1d3898876b076f74f">
+					<Route path="/blog/:id">
 						<Blog />
 					</Route>
 					<Route path="/newBlog">
