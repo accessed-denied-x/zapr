@@ -3,7 +3,12 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useStyles } from '../Styles/Styles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { Search, Notifications, AccountCircle } from '@material-ui/icons';
+import {
+	Search,
+	Notifications,
+	AccountCircle,
+	PostAdd,
+} from '@material-ui/icons';
 import {
 	AppBar,
 	Toolbar,
@@ -46,9 +51,7 @@ export default function Header() {
 								color="secondary"
 								className={classes.title}
 							>
-								<Link to="/">
-									Zapr
-								</Link>
+								<Link to="/">Zapr</Link>
 							</Typography>
 						</IconButton>
 					</Router>
@@ -67,12 +70,17 @@ export default function Header() {
 					</div>
 					{!isAuthenticated && (
 						<div className={classes.usernav}>
+							<Link to="/newBlog">
+								<IconButton color="inherit" className={classes.userButton}>
+									<PostAdd />
+								</IconButton>
+							</Link>
 							<IconButton
 								aria-label="show 17 new notifications"
 								color="inherit"
 								className={classes.userButton}
 							>
-								<Badge badgeContent={17} color="secondary">
+								<Badge /**badgeContent={17}*/ color="secondary">
 									<Notifications />
 								</Badge>
 							</IconButton>

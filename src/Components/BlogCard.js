@@ -15,14 +15,11 @@ import {
 	IconButton,
 	Typography,
 	Menu,
-	MenuItem
+	MenuItem,
 } from '@material-ui/core';
 import { GlobalContext } from '../Context/GlobalState';
 
 export default function BlogCard({ transaction }) {
-	const [anchorEl, setAnchorEl] = useState(null);
-	const { deleteTransaction } = useContext(GlobalContext);
-
 	const {
 		isLoading,
 		isAuthenticated,
@@ -32,6 +29,8 @@ export default function BlogCard({ transaction }) {
 		logout,
 	} = useAuth0();
 	const classes = useStyles();
+	const { deleteTransaction } = useContext(GlobalContext);
+	const [anchorEl, setAnchorEl] = useState(null);
 	const [expanded, setExpanded] = React.useState(false);
 
 	const handleExpandClick = () => {
@@ -40,14 +39,13 @@ export default function BlogCard({ transaction }) {
 
 	const handleClick = (e) => {
 		setAnchorEl(e.currentTarget);
-	}
+	};
 
 	const handleClose = () => {
 		setAnchorEl(null);
-	}
+	};
 
 	return (
-		//<Link to="/blog/600a4cc1d3898876b076f74f">
 		<li className={classes.li}>
 			<div className={classes.blogcard}>
 				<Card className={classes.card}>
@@ -59,34 +57,43 @@ export default function BlogCard({ transaction }) {
 						}
 						action={
 							<>
-							<IconButton aria-label="settings" aria-haspopup="true" color="secondary" onClick={handleClick}>
-								<MoreVert />
-							</IconButton>
-							<Menu
-								id="simple-menu"
-								anchorEl={anchorEl}
-								keepMounted
-								open={Boolean(anchorEl)}
-								onClose={handleClose}
-							>
-								<MenuItem onClick={() => {
-									handleClose();
-									deleteTransaction(transaction._id);
-								}}>Delete</MenuItem>
-						  </Menu>
+								<IconButton
+									aria-label="settings"
+									aria-haspopup="true"
+									color="secondary"
+									onClick={handleClick}
+								>
+									<MoreVert />
+								</IconButton>
+								<Menu
+									id="simple-menu"
+									anchorEl={anchorEl}
+									keepMounted
+									open={Boolean(anchorEl)}
+									onClose={handleClose}
+								>
+									<MenuItem
+										onClick={() => {
+											handleClose();
+											deleteTransaction(transaction._id);
+										}}
+									>
+										Delete
+									</MenuItem>
+								</Menu>
 							</>
 						}
 						title={transaction.title}
 						subheader={transaction.timestamp}
 					/>
-					<Link to="/blog/600a4cc1d3898876b076f74f">
+					{/* <Link to="/blog/600a4cc1d3898876b076f74f">
 						<CardMedia
 							className={classes.media}
 							image="https://www.ilac.com/wp-content/uploads/2019/06/placeholder-600x400.png"
 							title="img title"
 						/>
-					</Link>
-					
+					</Link> */}
+
 					<CardContent>
 						<Typography variant="body2" component="p">
 							{transaction.description}
@@ -119,6 +126,5 @@ export default function BlogCard({ transaction }) {
 				</Card>
 			</div>
 		</li>
-		//</Link>
 	);
 }

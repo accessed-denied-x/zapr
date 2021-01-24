@@ -1,6 +1,15 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+	view: {
+		margin: '2% 5%',
+		right: '10px',
+	},
+	home: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 	header: {},
 	space: {
 		height: '70px',
@@ -10,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	logo: {
 		maxWidth: '100px',
+		filter: 'brightness(62%)',
 	},
 	menuButton: {
 		marginRight: theme.spacing(4),
@@ -52,23 +62,25 @@ const useStyles = makeStyles((theme) => ({
 		right: '10px',
 	},
 	userButton: {
-		margin: '0 3px',
+		margin: '0 7px',
 	},
 	blogcard: {
 		maxWidth: '640px',
 		marginBottom: '20px',
 		boxShadow: '10px 10px 5px black',
+		backgroundColor: 'rgba(0,0,0,0.3)',
 	},
 	card: {
 		backgroundColor: 'rgba(0,0,0,0.3)',
 		color: 'grey',
+		width: '600px',
 	},
 	avatar: {
 		backgroundColor: 'rgba(50,30,30,0.5)',
 	},
 	media: {
 		height: '360px',
-		width: '640px',
+		width: '100%',
 	},
 	expand: {
 		transform: 'rotate(0deg)',

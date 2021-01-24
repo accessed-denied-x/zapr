@@ -1,39 +1,37 @@
 import React, { useContext, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, withRouter, Link } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	withRouter,
+	Link,
+} from 'react-router-dom';
 import BlogCard from '../Components/BlogCard';
-import '../Styles/Home.css';
+import { useStyles } from '../Styles/Styles';
 import { GlobalContext } from '../Context/GlobalState';
 import Blog from './Blog';
 import NewBlog from './NewBlog';
 
 function Home() {
 	const { transactions, getTransactions } = useContext(GlobalContext);
+	const classes = useStyles();
 
 	useEffect(() => {
 		getTransactions();
-	}, [])
-	
+	}, []);
+
 	console.log(transactions);
 
 	return (
-		<div id="placeholder">
-			<div id="blogcard-container">
+		<div className={classes.home}>
+			<div>
 				<ul>
-					{transactions.map(transaction => (
+					{transactions.map((transaction) => (
 						<BlogCard key={transaction._id} transaction={transaction} />
 					))}
 				</ul>
-				<Link to="/newBlog">
-					<div id="button-container">
-							<button type="button" id="new-blog-button" onClick={window.scrollTo({top: 0, behavior: "smooth"})}>
-								+
-							</button>
-					</div>
-				</Link>
 			</div>
-			
-			
-			<div className="view">
+			<div className={classes.view}>
 				<Switch>
 					<Route path="/blog/600a4cc1d3898876b076f74f">
 						<Blog />
@@ -47,4 +45,4 @@ function Home() {
 	);
 }
 
-export default withRouter(Home);
+export default Home;
