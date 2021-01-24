@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import clsx from 'clsx';
-import { useStyles } from '../Styles/Styles';
+import { useStyles } from '../Styles/BlogStyles';
 import { Favorite, Share, ExpandMore, MoreVert } from '@material-ui/icons';
 import {
 	Avatar,

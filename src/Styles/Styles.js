@@ -10,12 +10,8 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	header: {},
 	space: {
 		height: '70px',
-	},
-	li: {
-		listStyleType: 'none',
 	},
 	logo: {
 		maxWidth: '100px',
@@ -63,34 +59,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	userButton: {
 		margin: '0 7px',
-	},
-	blogcard: {
-		maxWidth: '640px',
-		marginBottom: '20px',
-		boxShadow: '10px 10px 5px black',
-		backgroundColor: 'rgba(0,0,0,0.3)',
-	},
-	card: {
-		backgroundColor: 'rgba(0,0,0,0.3)',
-		color: 'grey',
-		width: '600px',
-	},
-	avatar: {
-		backgroundColor: 'rgba(50,30,30,0.5)',
-	},
-	media: {
-		height: '360px',
-		width: '100%',
-	},
-	expand: {
-		transform: 'rotate(0deg)',
-		marginLeft: 'auto',
-		transition: theme.transitions.create('transform', {
-			duration: theme.transitions.duration.shortest,
-		}),
-	},
-	expandOpen: {
-		transform: 'rotate(180deg)',
 	},
 }));
 
