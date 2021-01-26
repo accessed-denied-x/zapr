@@ -36,7 +36,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function getBlog(id) {
         try {
-            const res = await axios.get('/api/transactions/blog/600d0c7be4337d6f5c57cc71')
+            const res = await axios.get('/api/transactions/blog/' + id)
 
             dispatch({
                 type: 'GET_BLOG',
@@ -72,16 +72,12 @@ export const GlobalProvider = ({ children }) => {
         console.log("POST ATTEMPTED")
         try {
             const res = await axios.post('/api/transactions', transaction, config);
-            console.log("POST SUCCESSFUL")
+            
             dispatch({
                 type: 'ADD_TRANSACTION',
                 payload: res.data.data
             })
         } catch (err) {
-            console.log("POST FAILED")
-            console.log(err.response);
-            console.log(err.request);
-            console.log(err.message);
             dispatch({
                 type: 'TRANSACTION_ERROR',
                 payload: err.response.data.error

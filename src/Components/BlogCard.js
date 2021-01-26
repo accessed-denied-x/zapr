@@ -85,7 +85,7 @@ export default function BlogCard({ transaction }) {
 					title={transaction.title}
 					subheader={transaction.timestamp}
 				/>
-				<Link to="/blog/600d0c7be4337d6f5c57cc71">
+				<Link to={"/blog/" + transaction._id}>
 					<CardMedia
 						className={classes.media}
 						image="https://www.ilac.com/wp-content/uploads/2019/06/placeholder-600x400.png"
