@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import { useStyles } from '../Styles/Styles';
+import { useStyles } from '../Styles/HeaderStyles';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
 	Search,

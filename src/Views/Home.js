@@ -7,7 +7,7 @@ import {
 	Link,
 } from 'react-router-dom';
 import BlogCard from '../Components/BlogCard';
-import { useStyles } from '../Styles/Styles';
+import { useStyles } from '../Styles/HomeStyles';
 import { GlobalContext } from '../Context/GlobalState';
 import Blog from './Blog';
 import NewBlog from './NewBlog';
@@ -20,16 +20,18 @@ export default function Home() {
 		getTransactions();
 	}, []);
 
+	console.log("HOME RENDERED")
+
 	return (
 		<div className={classes.home}>
-			<div>
+			<div className={classes.viewA}>
 				<ul>
 					{transactions.map((transaction) => (
 						<BlogCard key={transaction._id} transaction={transaction} />
 					))}
 				</ul>
 			</div>
-			<div className={classes.view}>
+			<div className={classes.viewB}>
 				<Switch>
 					<Route path="/blog/:id">
 						<Blog />

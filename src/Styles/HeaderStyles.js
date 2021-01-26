@@ -1,21 +1,12 @@
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-	view: {
-		margin: '2% 5%',
-		right: '10px',
-	},
-	home: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
 	space: {
 		height: '70px',
 	},
 	logo: {
 		maxWidth: '100px',
-		filter: 'brightness(62%)',
+		filter: 'brightness(61%)',
 	},
 	menuButton: {
 		marginRight: theme.spacing(4),

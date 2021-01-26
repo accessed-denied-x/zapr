@@ -92,36 +92,37 @@ export default function BlogCard({ transaction }) {
 						title="img title"
 					/>
 				</Link>
-
-				<CardContent>
-					<Typography variant="body2" component="p">
-						{transaction.description}
-					</Typography>
-				</CardContent>
-				<CardActions disableSpacing>
-					<IconButton aria-label="add to favorites" color="secondary">
-						<Favorite />
-					</IconButton>
-					<IconButton aria-label="share" color="secondary">
-						<Share />
-					</IconButton>
-					<IconButton
-						className={clsx(classes.expand, {
-							[classes.expandOpen]: expanded,
-						})}
-						onClick={handleExpandClick}
-						aria-expanded={expanded}
-						aria-label="show more"
-						color="secondary"
-					>
-						<ExpandMore />
-					</IconButton>
-				</CardActions>
-				<Collapse in={expanded} timeout="auto" unmountOnExit>
+				<div className={classes.footer}>
 					<CardContent>
-						<Typography>{transaction.description}</Typography>
+						<Typography variant="body2" component="p">
+							{transaction.description}
+						</Typography>
 					</CardContent>
-				</Collapse>
+					<CardActions disableSpacing>
+						<IconButton aria-label="add to favorites" color="secondary">
+							<Favorite />
+						</IconButton>
+						<IconButton aria-label="share" color="secondary">
+							<Share />
+						</IconButton>
+						<IconButton
+							className={clsx(classes.expand, {
+								[classes.expandOpen]: expanded,
+							})}
+							onClick={handleExpandClick}
+							aria-expanded={expanded}
+							aria-label="show more"
+							color="secondary"
+						>
+							<ExpandMore />
+						</IconButton>
+					</CardActions>
+					<Collapse in={expanded} timeout="auto" unmountOnExit>
+						<CardContent>
+							<Typography>{transaction.body}</Typography>
+						</CardContent>
+					</Collapse>
+				</div>
 			</Card>
 		</div>
 	);

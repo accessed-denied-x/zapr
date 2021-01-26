@@ -7,9 +7,11 @@ export default function Blog() {
 
 	const { id } = useParams();
 
+	console.log('BLOG RENDERED');
+
 	useEffect(() => {
 		getBlog(id)
-	})
+	}, [id]);
 
 	return (
 		<div>

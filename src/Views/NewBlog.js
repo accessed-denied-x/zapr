@@ -20,6 +20,8 @@ export default function NewBlog() {
         addTransaction(newTransaction)
     }
 
+    console.log('NEW BLOG PAGE RENDERED')
+
     return (
         <form onSubmit={onSubmit}>
             <label htmlFor="title">Title: </label>
