@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import clsx from 'clsx';
-import { useStyles } from '../Styles/BlogStyles';
+import { useStyles } from '../Styles/BlogCardStyles';
 import { Favorite, Share, ExpandMore, MoreVert } from '@material-ui/icons';
 import {
 	Avatar,
@@ -105,17 +105,19 @@ export default function BlogCard({ transaction }) {
 						<IconButton aria-label="share" color="secondary">
 							<Share />
 						</IconButton>
-						<IconButton
-							className={clsx(classes.expand, {
-								[classes.expandOpen]: expanded,
-							})}
-							onClick={handleExpandClick}
-							aria-expanded={expanded}
-							aria-label="show more"
-							color="secondary"
-						>
-							<ExpandMore />
-						</IconButton>
+						<div className={classes.exp}>
+							<IconButton
+								className={clsx(classes.expand, {
+									[classes.expandOpen]: expanded,
+								})}
+								onClick={handleExpandClick}
+								aria-expanded={expanded}
+								aria-label="show more"
+								color="secondary"
+							>
+								<ExpandMore />
+							</IconButton>
+						</div>
 					</CardActions>
 					<Collapse in={expanded} timeout="auto" unmountOnExit>
 						<CardContent>

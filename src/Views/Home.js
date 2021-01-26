@@ -25,11 +25,9 @@ export default function Home() {
 	return (
 		<div className={classes.home}>
 			<div className={classes.viewA}>
-				<ul>
-					{transactions.map((transaction) => (
-						<BlogCard key={transaction._id} transaction={transaction} />
-					))}
-				</ul>
+				{transactions.slice(0).reverse().map((transaction) => (
+					<BlogCard key={transaction._id} transaction={transaction} />
+				))}
 			</div>
 			<div className={classes.viewB}>
 				<Switch>

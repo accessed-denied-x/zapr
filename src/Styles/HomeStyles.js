@@ -2,19 +2,19 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
 	viewA: {
-		width: '50%',
-		maxHeight: '10%',
+		width: '40%',
+		height: '100%',
+		maxHeight: '83.9vh',
 		overflowY: 'scroll',
-		padding: '0% 2%',
-		display: 'flex',
-		alignItems: 'center'
+		position: 'relative',
+		paddingLeft: '20px',
+		paddingTop: '2vh',
 	},
 	viewB: {
-		width: '40%',
+		width: '60%',
 		overflowY: 'scroll',
 		padding: '2% 5%',
 		display: 'flex',
-		alignItems: 'center'
 	},
 	home: {
 		display: 'flex'

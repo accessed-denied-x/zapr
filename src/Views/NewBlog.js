@@ -5,6 +5,7 @@ export default function NewBlog() {
     const [title, setTitle] = useState('');
     const [description, setDesc] = useState('');
     const [body, setBodyText] = useState('');
+    const [submitted, setSubmitted] = useState(null);
 
     const { addTransaction } = useContext(GlobalContext);
 
@@ -25,15 +26,19 @@ export default function NewBlog() {
     return (
         <form onSubmit={onSubmit}>
             <label htmlFor="title">Title: </label>
-            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+            <input type="text" value={submitted ? "Submitted!" : title} onChange={(e) => setTitle(e.target.value)} required />
             
             <label htmlFor="description">Description: </label>
-            <input type="text" value={description} onChange={(e) => setDesc(e.target.value)} required />
+            <input type="text" value={submitted ? "Submitted!" : description} onChange={(e) => setDesc(e.target.value)} required />
 
             <label htmlFor="body">Body: </label>
-            <textarea placeholder="Release your ideas..." value={body} onChange={(e) => setBodyText(e.target.value)} required></textarea>
+            <textarea placeholder="Let inspiration strike..." value={submitted ? "Submitted!" : body} onChange={(e) => setBodyText(e.target.value)} required></textarea>
 
-            <button>Submit</button>
+            <button onClick={() => {
+                setSubmitted(true);
+            }}>
+                Submit
+            </button>
         </form>
     )
 }

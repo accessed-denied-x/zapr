@@ -1,6 +1,7 @@
 import { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
 
 //initial state
 const initialState = {
@@ -16,6 +17,16 @@ export const GlobalContext = createContext(initialState);
 //Provider Component
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
+
+    //auth state
+    const {
+        isLoading,
+        isAuthenticated,
+        error,
+        user,
+        loginWithRedirect,
+        logout,
+    } = useAuth0();
 
     //actions
     async function getTransactions() {

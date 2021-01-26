@@ -20,13 +20,14 @@ import {
 
 export default function Header() {
 	const {
-		isLoading,
-		isAuthenticated,
-		error,
-		user,
-		loginWithRedirect,
-		logout,
+        isLoading,
+        isAuthenticated,
+        error,
+        user,
+        loginWithRedirect,
+        logout,
 	} = useAuth0();
+	
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const menuId = 'primary-search-account-menu';
@@ -68,7 +69,7 @@ export default function Header() {
 							inputProps={{ 'aria-label': 'search' }}
 						/>
 					</div>
-					{!isAuthenticated && (
+					{isAuthenticated && (
 						<div className={classes.usernav}>
 							<IconButton
 								component={Link}
