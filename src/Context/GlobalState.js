@@ -5,6 +5,7 @@ import axios from 'axios';
 //initial state
 const initialState = {
     transactions: [],
+    blog: {},
     error: null,
     loading: true
 }
@@ -35,17 +36,14 @@ export const GlobalProvider = ({ children }) => {
 
     async function getBlog(id) {
         try {
-            const res = await axios.get(`/api/transactions/blog/${id}`);
+            const res = await axios.get('/api/transactions/blog/600d0c7be4337d6f5c57cc71')
 
             dispatch({
                 type: 'GET_BLOG',
                 payload: res.data.data
             })
         } catch (err) {
-            dispatch({
-                type: 'TRANSACTION_ERR',
-                payload: err.response.data.error
-            })
+            console.log(err)
         }
     }
 
@@ -93,6 +91,7 @@ export const GlobalProvider = ({ children }) => {
 
     return (<GlobalContext.Provider value ={{
         transactions: state.transactions,
+        blog: state.blog,
         error: state.error,
         laoding: state.loading,
         getTransactions,

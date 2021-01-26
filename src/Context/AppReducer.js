@@ -11,7 +11,7 @@ export default (state, action) => {
             return {
                 ...state,
                 loading: false,
-                transactions: state.transactions.filter(transaction => transaction._id === action.payload)
+                blog: action.payload
             }
         case 'DELETE_TRANSACTION':
             return {

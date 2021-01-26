@@ -20,8 +20,6 @@ export default function Home() {
 		getTransactions();
 	}, []);
 
-	console.log(transactions);
-
 	return (
 		<div className={classes.home}>
 			<div>
