@@ -1,13 +1,19 @@
 import React, { useState, useContext } from 'react';
 import { GlobalContext } from '../Context/GlobalState';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function NewBlog() {
     const [title, setTitle] = useState('');
     const [description, setDesc] = useState('');
     const [body, setBodyText] = useState('');
     const [submitted, setSubmitted] = useState(null);
+    const { user, isAuthenticated, isLoading } = useAuth0();
 
     const { addTransaction } = useContext(GlobalContext);
+
+    if (isLoading) {
+        return <div>Loading ...</div>;
+      }
 
     const onSubmit = e => {
         e.preventDefault();
@@ -15,7 +21,8 @@ export default function NewBlog() {
         const newTransaction = {
             title,
             description,
-            body
+            body,
+            user: user.name
         }
 
         addTransaction(newTransaction)
@@ -23,7 +30,7 @@ export default function NewBlog() {
 
     console.log('NEW BLOG PAGE RENDERED')
 
-    return (
+    return isAuthenticated && (
         <form onSubmit={onSubmit}>
             <label htmlFor="title">Title: </label>
             <input type="text" value={submitted ? "Submitted!" : title} onChange={(e) => setTitle(e.target.value)} required />

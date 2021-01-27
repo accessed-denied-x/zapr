@@ -33,6 +33,15 @@ export default function BlogCard({ transaction }) {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [expanded, setExpanded] = React.useState(false);
 
+	const userStr = user.name;
+	const strArr = userStr.split(" ");
+	let initialsIcon = "";
+	try {
+		initialsIcon = initialsIcon + strArr[0].charAt(0) + strArr[1].charAt(0)
+	} catch (err) {
+		initialsIcon = initialsIcon + strArr[0].charAt(0)	//Incase they have no last name or something idk
+	}
+
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
 	};
@@ -51,7 +60,7 @@ export default function BlogCard({ transaction }) {
 				<CardHeader
 					avatar={
 						<Avatar aria-label="user" className={classes.avatar}>
-							AS
+							{initialsIcon}
 						</Avatar>
 					}
 					action={
@@ -95,7 +104,8 @@ export default function BlogCard({ transaction }) {
 				<div className={classes.footer}>
 					<CardContent>
 						<Typography variant="body2" component="p">
-							{transaction.description}
+							{transaction.description}<br/><br/>
+							{transaction.createdAt.slice(0,10)}
 						</Typography>
 					</CardContent>
 					<CardActions disableSpacing>
@@ -121,7 +131,9 @@ export default function BlogCard({ transaction }) {
 					</CardActions>
 					<Collapse in={expanded} timeout="auto" unmountOnExit>
 						<CardContent>
-							<Typography>{transaction.body}</Typography>
+							<Typography>
+								{transaction.body}
+							</Typography>
 						</CardContent>
 					</Collapse>
 				</div>
