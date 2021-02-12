@@ -2,11 +2,11 @@
 
 ## Supported Versions
 
-App still in beta phase.
+App still in dev phase.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| beta    | :white_check_mark: |
+| dev     | :white_check_mark: |
 | 0.0.1   | :x:                |
 | 1.0.x   | :x:                |
 | < 1.0   | :x:                |
