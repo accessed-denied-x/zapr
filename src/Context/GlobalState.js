@@ -100,7 +100,7 @@ export const GlobalProvider = ({ children }) => {
         transactions: state.transactions,
         blog: state.blog,
         error: state.error,
-        laoding: state.loading,
+        loading: state.loading,
         getTransactions,
         getBlog,
         deleteTransaction,
