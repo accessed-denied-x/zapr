@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	userButton: {
 		margin: '0 7px',
+		'&:hover': {
+			color: '#5e3333',
+		},
 	},
 }));
 
