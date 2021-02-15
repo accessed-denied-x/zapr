@@ -22,6 +22,7 @@ export default function Header() {
 	const { isAuthenticated, logout } = useAuth0();
 
 	const classes = useStyles();
+	// eslint-disable-next-line
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const menuId = 'primary-search-account-menu';
 

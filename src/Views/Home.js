@@ -12,6 +12,7 @@ export default function Home() {
 
 	useEffect(() => {
 		getTransactions();
+		// eslint-disable-next-line
 	}, []);
 
 	console.log('HOME RENDERED');
