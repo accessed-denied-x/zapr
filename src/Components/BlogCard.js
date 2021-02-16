@@ -20,26 +20,19 @@ import {
 import { GlobalContext } from '../Context/GlobalState';
 
 export default function BlogCard({ transaction }) {
-	const {
-		isLoading,
-		isAuthenticated,
-		error,
-		user,
-		loginWithRedirect,
-		logout,
-	} = useAuth0();
+	const { user } = useAuth0();
 	const classes = useStyles();
 	const { deleteTransaction } = useContext(GlobalContext);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [expanded, setExpanded] = React.useState(false);
 
 	const userStr = user.name;
-	const strArr = userStr.split(" ");
-	let initialsIcon = "";
+	const strArr = userStr.split(' ');
+	let initialsIcon = '';
 	try {
-		initialsIcon = initialsIcon + strArr[0].charAt(0) + strArr[1].charAt(0)
+		initialsIcon = initialsIcon + strArr[0].charAt(0) + strArr[1].charAt(0);
 	} catch (err) {
-		initialsIcon = initialsIcon + strArr[0].charAt(0)	//Incase they have no last name or something idk
+		initialsIcon = initialsIcon + strArr[0].charAt(0); //Incase they have no last name or something idk
 	}
 
 	const handleExpandClick = () => {
@@ -94,7 +87,7 @@ export default function BlogCard({ transaction }) {
 					title={transaction.title}
 					subheader={transaction.timestamp}
 				/>
-				<Link to={"/blog/" + transaction._id}>
+				<Link to={'/blog/' + transaction._id}>
 					<CardMedia
 						className={classes.media}
 						image="https://www.ilac.com/wp-content/uploads/2019/06/placeholder-600x400.png"
@@ -104,8 +97,10 @@ export default function BlogCard({ transaction }) {
 				<div className={classes.footer}>
 					<CardContent>
 						<Typography variant="body2" component="p">
-							{transaction.description}<br/><br/>
-							{transaction.createdAt.slice(0,10)}
+							{transaction.description}
+							<br />
+							<br />
+							{transaction.createdAt.slice(0, 10)}
 						</Typography>
 					</CardContent>
 					<CardActions disableSpacing>
@@ -131,9 +126,7 @@ export default function BlogCard({ transaction }) {
 					</CardActions>
 					<Collapse in={expanded} timeout="auto" unmountOnExit>
 						<CardContent>
-							<Typography>
-								{transaction.body}
-							</Typography>
+							<Typography>{transaction.body}</Typography>
 						</CardContent>
 					</Collapse>
 				</div>

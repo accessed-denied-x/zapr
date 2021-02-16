@@ -10,14 +10,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function App() {
-	const {
-        isLoading,
-        isAuthenticated,
-        error,
-        user,
-        loginWithRedirect,
-        logout,
-    } = useAuth0();
+	const { isLoading, isAuthenticated, error, loginWithRedirect } = useAuth0();
 
 	if (isLoading) {
 		return (
@@ -33,10 +26,10 @@ export default function App() {
 	return isAuthenticated ? (
 		<ThemeProvider theme={theme}>
 			<Router>
-			<GlobalProvider>
-				<Header />
-				<Home />
-			</GlobalProvider>
+				<GlobalProvider>
+					<Header />
+					<Home />
+				</GlobalProvider>
 			</Router>
 		</ThemeProvider>
 	) : (
