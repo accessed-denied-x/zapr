@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useStyles } from '../Styles/HeaderStyles';
@@ -17,11 +17,12 @@ import {
 	Typography,
 	Badge,
 } from '@material-ui/core';
+import { UserContext } from '../Context/UserContext';
 
 export default function Header() {
-	const { isAuthenticated, logout } = useAuth0();
-
 	const classes = useStyles();
+	const { isAuthenticated, logout } = useAuth0();
+	const { search, setSearch } = useContext(UserContext);
 	// eslint-disable-next-line
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const menuId = 'primary-search-account-menu';
@@ -61,6 +62,7 @@ export default function Header() {
 								input: classes.inputInput,
 							}}
 							inputProps={{ 'aria-label': 'search' }}
+							onChange={(e) => setSearch(e.target.value)}
 						/>
 					</div>
 					{isAuthenticated && (

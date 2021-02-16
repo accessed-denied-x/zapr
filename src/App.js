@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import theme from './Styles/theme';
@@ -8,27 +8,22 @@ import Home from './Views/Home';
 import { GlobalProvider } from './Context/GlobalState';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { UserContext } from './Context/UserContext';
 
 export default function App() {
 	const { isLoading, isAuthenticated, error, loginWithRedirect } = useAuth0();
+	const [search, setSearch] = useState('');
 
-	if (isLoading) {
-		return (
-			<div>
-				<CircularProgress color="primary" size="100" />
-			</div>
-		);
-	}
-	if (error) {
-		return <div>Oops... {error.message}</div>;
-	}
-
+	if (isLoading) return <CircularProgress color="primary" size="100" />;
+	if (error) return <div>Oops... {error.message}</div>;
 	return isAuthenticated ? (
 		<ThemeProvider theme={theme}>
 			<Router>
 				<GlobalProvider>
-					<Header />
-					<Home />
+					<UserContext.Provider value={{ search, setSearch }}>
+						<Header />
+						<Home />
+					</UserContext.Provider>
 				</GlobalProvider>
 			</Router>
 		</ThemeProvider>
