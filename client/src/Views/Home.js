@@ -34,12 +34,16 @@ export default function Home() {
 	return (
 		<div className={classes.home}>
 			<div className={classes.viewA}>
-				{filteredTransactions
-					//.slice(0)
-					.reverse()
-					.map((transaction) => (
-						<BlogCard key={transaction._id} transaction={transaction} />
-					))}
+				{transactions ? (
+					filteredTransactions
+						//.slice(0)
+						.reverse()
+						.map((transaction) => (
+							<BlogCard key={transaction._id} transaction={transaction} />
+						))
+				) : (
+					<p>transactions</p>
+				)}
 			</div>
 			<div className={classes.viewB}>
 				<Switch>
