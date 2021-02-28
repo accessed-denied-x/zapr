@@ -38,7 +38,7 @@ export const GlobalProvider = ({ children }) => {
 
 	async function getBlog(id) {
 		try {
-			const res = await axios.get(`${api}/${id}`);
+			const res = await axios.get(`${api}/blog/${id}`);
 
 			dispatch({
 				type: 'GET_BLOG',
