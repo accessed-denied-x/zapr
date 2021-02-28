@@ -10,6 +10,8 @@ const initialState = {
 	loading: true,
 };
 
+const api = 'https://zapr.herokuapp.com/api/transactions';
+
 //creating context
 export const GlobalContext = createContext(initialState);
 
@@ -20,7 +22,7 @@ export const GlobalProvider = ({ children }) => {
 	//actions
 	async function getTransactions() {
 		try {
-			const res = await axios.get('/api/transactions');
+			const res = await axios.get(api);
 
 			dispatch({
 				type: 'GET_TRANSACTIONS',
@@ -36,7 +38,7 @@ export const GlobalProvider = ({ children }) => {
 
 	async function getBlog(id) {
 		try {
-			const res = await axios.get('/api/transactions/blog/' + id);
+			const res = await axios.get(`${api}/${id}`);
 
 			dispatch({
 				type: 'GET_BLOG',
@@ -49,7 +51,7 @@ export const GlobalProvider = ({ children }) => {
 
 	async function deleteTransaction(id) {
 		try {
-			await axios.delete(`/api/transactions/${id}`);
+			await axios.delete(`${api}/${id}`);
 
 			dispatch({
 				type: 'DELETE_TRANSACTION',
@@ -71,7 +73,7 @@ export const GlobalProvider = ({ children }) => {
 		};
 		console.log('POST ATTEMPTED');
 		try {
-			const res = await axios.post('/api/transactions', transaction, config);
+			const res = await axios.post(api, transaction, config);
 
 			dispatch({
 				type: 'ADD_TRANSACTION',
