@@ -8,7 +8,6 @@ import { useStyles } from '../Styles/BlogStyles';
 export default function Blog() {
 	const classes = useStyles();
 	const { blog, getBlog } = useContext(GlobalContext);
-	const { user } = useAuth0();
 	const { id } = useParams();
 
 	console.log('BLOG RENDERED');
