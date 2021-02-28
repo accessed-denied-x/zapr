@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../Context/GlobalState';
 import { useParams } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 import { Card } from '@material-ui/core';
 import { useStyles } from '../Styles/BlogStyles';
 
