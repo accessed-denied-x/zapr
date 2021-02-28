@@ -22,12 +22,12 @@ export default function Blog() {
 		<div className={classes.blog}>
 			<Card className={classes.card}>
 				<div className={classes.content}>
-					<h1>{blog.title}</h1>
+					<h1>{transaction.title}</h1>
 					<p>
-						<small>{'Author: ' + user.name}</small>
+						<small>{'Author: ' + transaction.user}</small>
 					</p>
-					<p>{blog.description}</p> <br />
-					<p>{blog.body}</p>
+					<p>{transaction.description}</p> <br />
+					<p>{transaction.body}</p>
 				</div>
 			</Card>
 		</div>
