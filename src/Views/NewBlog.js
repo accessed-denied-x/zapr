@@ -8,14 +8,10 @@ export default function NewBlog() {
 	const [title, setTitle] = useState('');
 	const [description, setDesc] = useState('');
 	const [body, setBodyText] = useState('');
-	const { user, isAuthenticated, isLoading } = useAuth0();
+	const { user, isAuthenticated } = useAuth0();
 	const classes = useStyles();
 
 	const { addTransaction } = useContext(GlobalContext);
-
-	if (isLoading) {
-		return <div>Loading ...</div>;
-	}
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -24,11 +20,12 @@ export default function NewBlog() {
 			description,
 			body,
 			user: user.name,
+			email: user.email,
 		};
 		addTransaction(newTransaction);
 	};
 
-	console.log('NEW BLOG PAGE RENDERED');
+	//console.log('NEW BLOG PAGE RENDERED');
 
 	return (
 		isAuthenticated && (
