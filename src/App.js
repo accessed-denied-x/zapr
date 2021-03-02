@@ -16,7 +16,7 @@ export default function App() {
 
 	if (isLoading) return <CircularProgress color="primary" size="100" />;
 	if (error) return <div>Oops... {error.message}</div>;
-	return isAuthenticated ? (
+	return (
 		<ThemeProvider theme={theme}>
 			<Router>
 				<GlobalProvider>
@@ -27,7 +27,5 @@ export default function App() {
 				</GlobalProvider>
 			</Router>
 		</ThemeProvider>
-	) : (
-		loginWithRedirect()
 	);
 }
