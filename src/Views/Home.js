@@ -36,7 +36,7 @@ export default function Home() {
 			<div className={classes.viewA}>
 				{transactions ? (
 					filteredTransactions
-						//.slice(0)
+						.slice(0)
 						.reverse()
 						.map((transaction) => (
 							<BlogCard key={transaction._id} transaction={transaction} />
@@ -48,7 +48,7 @@ export default function Home() {
 			<div className={classes.viewB}>
 				<Switch>
 					<Route path="/blog/:id">
-						<Blog />
+						<Blog className={classes.blog} />
 					</Route>
 					<Route path="/newBlog">
 						<NewBlog />
