@@ -21,7 +21,7 @@ import { UserContext } from '../Context/UserContext';
 
 export default function Header() {
 	const classes = useStyles();
-	const { isAuthenticated, logout } = useAuth0();
+	const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
 	// eslint-disable-next-line
 	const { search, setSearch } = useContext(UserContext);
 	// eslint-disable-next-line
@@ -66,7 +66,7 @@ export default function Header() {
 							onChange={(e) => setSearch(e.target.value)}
 						/>
 					</div>
-					{isAuthenticated && (
+					{isAuthenticated ? (
 						<div className={classes.usernav}>
 							<IconButton
 								component={Link}
@@ -101,6 +101,10 @@ export default function Header() {
 								/>
 							</IconButton>
 						</div>
+					) : (
+						<IconButton color="inherit" className={classes.userButton}>
+							<ExitToAppIcon onClick={() => loginWithRedirect()} />
+						</IconButton>
 					)}
 				</Toolbar>
 			</AppBar>
