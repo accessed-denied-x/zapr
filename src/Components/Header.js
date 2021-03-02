@@ -1,13 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useStyles } from '../Styles/HeaderStyles';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import NewBlog from './NewBlog';
 import {
 	Search,
 	Notifications,
 	AccountCircle,
 	PostAdd,
+	ExitToApp,
 } from '@material-ui/icons';
 import {
 	AppBar,
@@ -16,8 +17,14 @@ import {
 	InputBase,
 	Typography,
 	Badge,
+	Dialog,
+	Slide,
 } from '@material-ui/core';
 import { UserContext } from '../Context/UserContext';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+	return <Slide direction="down" ref={ref} {...props} />;
+});
 
 export default function Header() {
 	const classes = useStyles();
@@ -27,9 +34,18 @@ export default function Header() {
 	// eslint-disable-next-line
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const menuId = 'primary-search-account-menu';
+	const [open, setOpen] = useState(false);
 
 	const handleProfileMenuOpen = (event) => {
 		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClickOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
 	};
 
 	return (
@@ -43,13 +59,15 @@ export default function Header() {
 					/>
 					<Router>
 						<IconButton component={Link} to="/">
-							<Typography
-								variant="h4"
-								color="secondary"
-								className={classes.title}
-							>
-								<Link to="/">Zapr</Link>
-							</Typography>
+							<Link to="/" color="#31707d">
+								<Typography
+									variant="h4"
+									color="secondary"
+									className={classes.title}
+								>
+									Zapr
+								</Typography>
+							</Link>
 						</IconButton>
 					</Router>
 					<div className={classes.search}>
@@ -66,13 +84,20 @@ export default function Header() {
 							onChange={(e) => setSearch(e.target.value)}
 						/>
 					</div>
+					<Dialog
+						open={open}
+						TransitionComponent={Transition}
+						keepMounted
+						onClose={handleClose}
+					>
+						<NewBlog setOpen={setOpen} />
+					</Dialog>
 					{isAuthenticated ? (
 						<div className={classes.usernav}>
 							<IconButton
-								component={Link}
-								to="/newBlog"
 								color="inherit"
 								className={classes.userButton}
+								onClick={handleClickOpen}
 							>
 								<PostAdd />
 							</IconButton>
@@ -96,14 +121,14 @@ export default function Header() {
 								<AccountCircle />
 							</IconButton>
 							<IconButton color="inherit" className={classes.userButton}>
-								<ExitToAppIcon
+								<ExitToApp
 									onClick={() => logout({ returnTo: window.location.origin })}
 								/>
 							</IconButton>
 						</div>
 					) : (
 						<IconButton color="inherit" className={classes.userButton}>
-							<ExitToAppIcon onClick={() => loginWithRedirect()} />
+							<ExitToApp onClick={() => loginWithRedirect()} />
 						</IconButton>
 					)}
 				</Toolbar>
