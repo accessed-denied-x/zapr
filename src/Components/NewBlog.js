@@ -4,14 +4,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useStyles } from '../Styles/NewBlogStyles';
 import { Card, TextField, Button } from '@material-ui/core';
 
-export default function NewBlog() {
+export default function NewBlog({ setOpen }) {
+	const classes = useStyles();
+	const { user, isAuthenticated } = useAuth0();
+	const { addTransaction } = useContext(GlobalContext);
 	const [title, setTitle] = useState('');
 	const [description, setDesc] = useState('');
-	const [body, setBodyText] = useState('');
-	const { user, isAuthenticated } = useAuth0();
-	const classes = useStyles();
-
-	const { addTransaction } = useContext(GlobalContext);
+	const [body, setBody] = useState('');
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -23,6 +22,10 @@ export default function NewBlog() {
 			email: user.email,
 		};
 		addTransaction(newTransaction);
+		setTitle('');
+		setDesc('');
+		setBody('');
+		setOpen(false);
 	};
 
 	//console.log('NEW BLOG PAGE RENDERED');
@@ -37,6 +40,7 @@ export default function NewBlog() {
 								variant="filled"
 								label="Title"
 								color="secondary"
+								value={title}
 								onChange={(e) => setTitle(e.target.value)}
 								className={classes.textfield}
 								required
@@ -52,6 +56,7 @@ export default function NewBlog() {
 								variant="filled"
 								label="Description"
 								color="secondary"
+								value={description}
 								onChange={(e) => setDesc(e.target.value)}
 								className={classes.textfield}
 								required
@@ -67,7 +72,8 @@ export default function NewBlog() {
 								variant="outlined"
 								label="Body"
 								color="secondary"
-								onChange={(e) => setBodyText(e.target.value)}
+								value={body}
+								onChange={(e) => setBody(e.target.value)}
 								className={classes.textfield}
 								required
 								fullWidth
