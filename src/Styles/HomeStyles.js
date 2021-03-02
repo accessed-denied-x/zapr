@@ -2,10 +2,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
 	viewA: {
-		width: '40%',
+		width: '100%',
 		height: '100%',
-		maxHeight: '83.8vh',
-		overflowY: 'scroll',
+		maxHeight: '100%',
 		position: 'relative',
 		paddingLeft: '20px',
 		paddingTop: '2vh',

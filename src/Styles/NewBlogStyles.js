@@ -3,17 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
 	newblog: {
 		width: '100%',
-		maxWidth: '700px',
+		maxWidth: '720px',
 		height: '450px',
 		boxShadow: '10px 10px 5px rgba(0, 0, 0, 0.5)',
 		//boxShadow: 'rgba(0, 0, 0, 0.2) 5px 5px, rgba(0, 0, 0, 0.15) 10px 10px, rgba(0, 0, 0, 0.1) 15px 15px, rgba(0, 0, 0, 0.075) 20px 20px, rgba(0, 0, 0, 0.05) 25px 25px',
-		backgroundColor: 'rgba(0,0,0,0.3)',
+		backgroundColor: 'rgba(0,0,0,0.95)',
 	},
 	card: {
-		backgroundColor: 'rgba(0,0,0,.3)',
-		color: 'grey',
 		width: '100%',
 		height: '100%',
+		backgroundColor: 'transparent',
 	},
 	box: {
 		display: 'flex',
@@ -25,12 +24,13 @@ const useStyles = makeStyles((theme) => ({
 		color: 'grey',
 		alignSelf: 'center',
 		marginBottom: '10px',
-		background: 'transparent',
-		backgroundColor: 'rgba(0,0,0,0.1)',
+		backgroundColor: 'transparent',
 	},
 	button: {
 		alignSelf: 'center',
-		margin: '5px 0px',
+		margin: '5px 1px',
+		color: 'black',
+		fontWeight: 'bold',
 	},
 	input: {
 		color: '#959b9b',
