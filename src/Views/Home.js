@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import BlogCard from '../Components/BlogCard';
 import { useStyles } from '../Styles/HomeStyles';
 import { GlobalContext } from '../Context/GlobalState';
-import Blog from './Blog';
-import NewBlog from './NewBlog';
+//import Blog from './Blog';
 import { UserContext } from '../Context/UserContext';
 
 export default function Home() {
@@ -45,7 +43,7 @@ export default function Home() {
 					<p>transactions</p>
 				)}
 			</div>
-			<div className={classes.viewB}>
+			{/* <div className={classes.viewB}>
 				<Switch>
 					<Route path="/blog/:id">
 						<Blog className={classes.blog} />
@@ -54,7 +52,7 @@ export default function Home() {
 						<NewBlog />
 					</Route>
 				</Switch>
-			</div>
+			</div> */}
 		</div>
 	);
 }
