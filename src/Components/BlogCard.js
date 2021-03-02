@@ -20,20 +20,11 @@ import {
 import { GlobalContext } from '../Context/GlobalState';
 
 export default function BlogCard({ transaction }) {
-	const { user } = useAuth0();
 	const classes = useStyles();
 	const { deleteTransaction } = useContext(GlobalContext);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [expanded, setExpanded] = React.useState(false);
-
-	const userStr = user.name;
-	const strArr = userStr.split(' ');
-	let initialsIcon = '';
-	try {
-		initialsIcon = initialsIcon + strArr[0].charAt(0) + strArr[1].charAt(0);
-	} catch (err) {
-		initialsIcon = initialsIcon + strArr[0].charAt(0); //Incase they have no last name or something idk
-	}
+	const { user, isAuthenticated } = useAuth0();
 
 	const handleExpandClick = () => {
 		setExpanded(!expanded);
@@ -47,6 +38,21 @@ export default function BlogCard({ transaction }) {
 		setAnchorEl(null);
 	};
 
+	const strArr = transaction.user.split(' ');
+	let initialsIcon = '';
+	try {
+		initialsIcon = initialsIcon + strArr[0].charAt(0) + strArr[1].charAt(0);
+	} catch (err) {
+		initialsIcon = initialsIcon + strArr[0].charAt(0); //Incase they have no last name or something idk
+	}
+
+	let isCreator = false;
+	try {
+		isCreator = user.email === transaction.email;
+	} catch {
+		isCreator = false;
+	}
+
 	return (
 		<div className={classes.blogcard}>
 			<Card className={classes.card}>
@@ -57,32 +63,34 @@ export default function BlogCard({ transaction }) {
 						</Avatar>
 					}
 					action={
-						<>
-							<IconButton
-								aria-label="settings"
-								aria-haspopup="true"
-								color="secondary"
-								onClick={handleClick}
-							>
-								<MoreVert />
-							</IconButton>
-							<Menu
-								id="simple-menu"
-								anchorEl={anchorEl}
-								keepMounted
-								open={Boolean(anchorEl)}
-								onClose={handleClose}
-							>
-								<MenuItem
-									onClick={() => {
-										handleClose();
-										deleteTransaction(transaction._id);
-									}}
+						isCreator && (
+							<>
+								<IconButton
+									title="settings"
+									aria-haspopup="true"
+									color="secondary"
+									onClick={handleClick}
 								>
-									Delete
-								</MenuItem>
-							</Menu>
-						</>
+									<MoreVert />
+								</IconButton>
+								<Menu
+									id="simple-menu"
+									anchorEl={anchorEl}
+									keepMounted
+									open={Boolean(anchorEl)}
+									onClose={handleClose}
+								>
+									<MenuItem
+										onClick={() => {
+											handleClose();
+											deleteTransaction(transaction._id);
+										}}
+									>
+										Delete
+									</MenuItem>
+								</Menu>
+							</>
+						)
 					}
 					title={transaction.title}
 					subheader={transaction.timestamp}
@@ -104,10 +112,16 @@ export default function BlogCard({ transaction }) {
 						</Typography>
 					</CardContent>
 					<CardActions disableSpacing>
-						<IconButton aria-label="add to favorites" color="secondary">
-							<Favorite />
-						</IconButton>
-						<IconButton aria-label="share" color="secondary">
+						{isAuthenticated ? (
+							<IconButton title="like" color="secondary">
+								<Favorite />
+							</IconButton>
+						) : (
+							<IconButton title="like" color="secondary">
+								<Favorite />
+							</IconButton>
+						)}
+						<IconButton title="share" color="secondary">
 							<Share />
 						</IconButton>
 						<div className={classes.exp}>
@@ -115,9 +129,9 @@ export default function BlogCard({ transaction }) {
 								className={clsx(classes.expand, {
 									[classes.expandOpen]: expanded,
 								})}
+								title="show more"
 								onClick={handleExpandClick}
 								aria-expanded={expanded}
-								aria-label="show more"
 								color="secondary"
 							>
 								<ExpandMore />
