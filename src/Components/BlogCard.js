@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import clsx from 'clsx';
 import { useStyles } from '../Styles/BlogCardStyles';
@@ -95,13 +94,12 @@ export default function BlogCard({ transaction }) {
 					title={transaction.title}
 					subheader={transaction.timestamp}
 				/>
-				<Link to={'/blog/' + transaction._id}>
-					<CardMedia
-						className={classes.media}
-						image="https://www.ilac.com/wp-content/uploads/2019/06/placeholder-600x400.png"
-						title="img title"
-					/>
-				</Link>
+				{/* <Link to={'/blog/' + transaction._id}></Link> */}
+				<CardMedia
+					className={classes.media}
+					image="https://www.ilac.com/wp-content/uploads/2019/06/placeholder-600x400.png"
+					title="img title"
+				/>
 				<div className={classes.footer}>
 					<CardContent>
 						<Typography variant="body2" component="p">
