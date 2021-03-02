@@ -11,7 +11,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserContext } from './Context/UserContext';
 
 export default function App() {
-	const { isLoading, isAuthenticated, error, loginWithRedirect } = useAuth0();
+	const { isLoading, error } = useAuth0();
 	const [search, setSearch] = useState('');
 
 	if (isLoading) return <CircularProgress color="primary" size="100" />;
