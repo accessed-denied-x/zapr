@@ -7,12 +7,12 @@ const useStyles = makeStyles((theme) => ({
 		height: '450px',
 		boxShadow: '10px 10px 5px rgba(0, 0, 0, 0.5)',
 		//boxShadow: 'rgba(0, 0, 0, 0.2) 5px 5px, rgba(0, 0, 0, 0.15) 10px 10px, rgba(0, 0, 0, 0.1) 15px 15px, rgba(0, 0, 0, 0.075) 20px 20px, rgba(0, 0, 0, 0.05) 25px 25px',
-		backgroundColor: 'rgba(0,0,0,0.95)',
+		//backgroundColor: 'rgba(0,0,0,0.97)',
 	},
 	card: {
 		width: '100%',
 		height: '100%',
-		backgroundColor: 'transparent',
+		backgroundColor: '#0a0a0a',
 	},
 	box: {
 		display: 'flex',
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 		color: 'grey',
 		alignSelf: 'center',
 		marginBottom: '10px',
-		backgroundColor: 'transparent',
 	},
 	button: {
 		alignSelf: 'center',
