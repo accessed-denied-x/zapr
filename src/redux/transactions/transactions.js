@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 import { GET_TRANSACTIONS, DELETE_TRANSACTION, ADD_TRANSACTION, TRANSACTION_ERROR } from './transactionSlice';
 
