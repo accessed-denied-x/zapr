@@ -32,6 +32,15 @@ export const transactionSlice = createSlice({
                 ...state,
                 error: action.payload
             }
-        }
+        },
     }
 })
+
+export const {
+    GET_TRANSACTIONS,
+    DELETE_TRANSACTION,
+    ADD_TRANSACTION,
+    TRANSACTION_ERROR
+} = transactionSlice.actions;
+
+export default transactionSlice.reducer;
