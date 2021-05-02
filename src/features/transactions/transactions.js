@@ -9,12 +9,12 @@ export async function getTransactions(dispatch) {
         const res = await axios.get(api);
 
         dispatch({
-            type: 'GET_TRANSACTIONS',
+            type: GET_TRANSACTIONS,
             payload: res.data.data,
         });
     } catch (err) {
         dispatch({
-            type: 'TRANSACTION_ERR',
+            type: TRANSACTION_ERROR,
             payload: err.response.data.error,
         });
     }
@@ -25,12 +25,12 @@ export 	async function deleteTransaction(dispatch, id) {
         await axios.delete(`${api}/${id}`);
 
         dispatch({
-            type: 'DELETE_TRANSACTION',
+            type: DELETE_TRANSACTION,
             payload: id,
         });
     } catch (err) {
         dispatch({
-            type: 'TRANSACTION_ERROR',
+            type: TRANSACTION_ERROR,
             payload: err.response.data.error,
         });
     }
@@ -47,12 +47,12 @@ export async function addTransaction(dispatch, transaction) {
         const res = await axios.post(api, transaction, config);
 
         dispatch({
-            type: 'ADD_TRANSACTION',
+            type: ADD_TRANSACTION,
             payload: res.data.data,
         });
     } catch (err) {
         dispatch({
-            type: 'TRANSACTION_ERROR',
+            type: TRANSACTION_ERROR,
             payload: err.response.data.error,
         });
     }
