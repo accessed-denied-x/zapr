@@ -95,11 +95,11 @@ export default function BlogCard({ transaction }) {
 					subheader={transaction.timestamp}
 				/>
 				{/* <Link to={'/blog/' + transaction._id}></Link> */}
-				<CardMedia
+				{/*<CardMedia
 					className={classes.media}
 					image="https://www.ilac.com/wp-content/uploads/2019/06/placeholder-600x400.png"
 					title="img title"
-				/>
+				/>*/}
 				<div className={classes.footer}>
 					<CardContent>
 						<Typography variant="body2" component="p">
